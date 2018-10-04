@@ -12,7 +12,10 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 yum -y update
 
 # Install nginx for instance http health check
-yum -y install nginx
+yum -y install nginx iptables-services
+
+chkconfig iptables on
+service iptables save
 
 ENABLE_SQUID="${squid_enabled}"
 
