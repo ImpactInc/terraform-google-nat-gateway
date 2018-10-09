@@ -14,6 +14,7 @@ yum -y update
 
 yum -y install iptables-services
 
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 chkconfig iptables on
 service iptables save
