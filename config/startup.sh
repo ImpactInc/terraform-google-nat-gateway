@@ -7,15 +7,18 @@ sysctl -w net.ipv4.ip_forward=1
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sed -i= 's/^[# ]*net.ipv4.ip_forward=[[:digit:]]/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-
 yum -y update
 
 # Install nginx for instance http health check
 yum -y install nginx iptables-services
 
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
 chkconfig iptables on
 service iptables save
+
+mkdir /var/run/nat_forward_ready
+
 
 ENABLE_SQUID="${squid_enabled}"
 
