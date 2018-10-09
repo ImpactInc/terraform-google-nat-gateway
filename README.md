@@ -9,7 +9,7 @@ Modular NAT Gateway on Google Compute Engine for Terraform.
 
 ```ruby
 module "nat" {
-  source     = "GoogleCloudPlatform/nat-gateway/google"
+  source     = "github.com/ImpactInc/terraform-google-nat-gateway"
   region     = "us-central1"
   network    = "default"
   subnetwork = "default"
@@ -22,7 +22,7 @@ And add the tag `${module.nat.routing_tag_regional}` to your instances without e
 
 ```ruby
 module "mig" {
-  source      = "GoogleCloudPlatform/managed-instance-group/google"
+  source      = "github.com/ImpactInc/terraform-google-managed-instance-group"
   version     = "1.1.14"
   region      = "us-central1"
   zone        = "us-central1-a"
