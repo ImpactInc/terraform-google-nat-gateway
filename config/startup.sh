@@ -19,6 +19,7 @@ service iptables save
 
 mkdir /var/run/nat_forward_ready
 
+
 ENABLE_SQUID="${squid_enabled}"
 
 if [[ "$$ENABLE_SQUID" == "true" ]]; then
